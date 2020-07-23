@@ -64,7 +64,8 @@ class LinkedList:
         
     def get_max(self):
         # if we do not have a head
-        if not self.head:
+        # 
+        if not self.head: 
             return None
         
         if self.head is not None:
