@@ -29,8 +29,10 @@ class BSTNode:
             if not self.right:
                 self.right = BSTNode(value)
             else:
-                self.right.insert(value)
-            
+                self.right.insert(value)    
+        # handle duplicates
+        else:
+            self.right = BSTNode(value) 
             
 
     # Return True if the tree contains the value
@@ -57,7 +59,14 @@ class BSTNode:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+        # start with root node and assign that to value
+        curr = self
+        if not self.right:
+            return curr.value
+        # cycle through list to see the highest value
+        while curr.right:
+            curr = curr.right
+        return curr.value
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
@@ -98,18 +107,18 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-bst = BSTNode(1)
+bst = BSTNode(5)
 
 # bst.insert(8)
 # bst.insert(5)
-bst.insert(7)
+bst.insert(30)
 # bst.insert(6)
-bst.insert(3)
+bst.insert(300)
 # bst.insert(4)
-bst.insert(2)
-bst.contains(2)
-print(bst.right.value)
+bst.insert(3)
+# bst.contains(2)
 
+bst.get_max()
 # bst.in_order_print()
 # bst.bft_print()
 # bst.dft_print()
